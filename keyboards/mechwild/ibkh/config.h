@@ -32,7 +32,7 @@
 #define MATRIX_COLS 6
 
 /* key matrix pins */
-#define MATRIX_ROW_PINS { B2, B1, F0, C7, C6}
+#define MATRIX_ROW_PINS { B2, B1, B6, C7, C6}
 #define MATRIX_COL_PINS { B0, B3, B7, D2, D3, D5}
 #define UNUSED_PINS
 
@@ -41,7 +41,7 @@
 
 /* If RGBLIGHT_ENABLE is set to yes in the rules, ensure the RGBLED_NUM is accurate for how many you have attached. */
 #define RGB_DI_PIN B5
-#define RGBLED_NUM 10 
+#define RGBLED_NUM 10
 #define RGBLIGHT_ANIMATIONS
 
 /* Set 0 if debouncing isn't needed */

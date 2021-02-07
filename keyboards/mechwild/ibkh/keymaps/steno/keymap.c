@@ -22,6 +22,10 @@
 #define FN3_BSPC    LT(3, KC_BSPC)
 #define SFT_ENT     RSFT_T(KC_ENT)
 
+void matrix_init_user() {
+  steno_set_mode(STENO_MODE_GEMINI); // or STENO_MODE_BOLT
+}
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [0] = LAYOUT(
