@@ -64,7 +64,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define BACKLIGHT_PIN B7
 //#define BACKLIGHT_LEVELS 3
 //#define BACKLIGHT_BREATHING
-#undef RGBW
 #define RGB_DI_PIN B14
 #ifdef RGB_DI_PIN
 #    define RGBLED_NUM 8
