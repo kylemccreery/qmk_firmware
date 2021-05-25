@@ -83,7 +83,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 #ifdef OLED_DRIVER_ENABLE
 	oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-		return OLED_ROTATION_270;       // flips the display 270 degrees
+		return OLED_ROTATION_90;       // flips the display 90 degrees
 	}
 
 	static void render_logo(void) {     // Render MechWild "MW" Logo
@@ -112,7 +112,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
             oled_write_ln_P(PSTR("Steno"), false);
             break;
         case _QWERTY:
-            oled_write_ln_P(PSTR("QWERTY"), false);
+            oled_write_ln_P(PSTR("QWERT"), false);
             break;
         case _LOWER:
             oled_write_ln_P(PSTR("Lower"), false);

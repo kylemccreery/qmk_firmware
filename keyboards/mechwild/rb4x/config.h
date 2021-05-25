@@ -21,7 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0x6D77 // mw = "MechWild"
-#define PRODUCT_ID      0x1707
+#define PRODUCT_ID      0x1708
 #define DEVICE_VER      0x0100
 #define MANUFACTURER    MechWild
 #define PRODUCT         RB4X
@@ -40,8 +40,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *                  ROW2COL = ROW = Anode (+), COL = Cathode (-, marked on diode)
  *
  */
-#define MATRIX_ROW_PINS { X_X_X, X_X_X, X_X_X, X_X_X, X_X_X, X_X_X, X_X_X }
-#define MATRIX_COL_PINS { X_X_X, X_X_X, X_X_X, X_X_X, X_X_X, X_X_X }
+#define MATRIX_ROW_PINS { B10, B1, A7, B13, B8, B9, A1 }
+#define MATRIX_COL_PINS { A4, A5, A6, A3, A2, B0}
 #define UNUSED_PINS
 
 /* COL2ROW, ROW2COL */
@@ -64,8 +64,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define BACKLIGHT_PIN B7
 //#define BACKLIGHT_LEVELS 3
 //#define BACKLIGHT_BREATHING
-
-#define RGB_DI_PIN X_X_X
+#undef RGBW
+#define RGB_DI_PIN B14
 #ifdef RGB_DI_PIN
 #    define RGBLED_NUM 8
 #    define RGBLIGHT_HUE_STEP 8
@@ -91,7 +91,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /*==== use exp() and sin() ====*/
 //#    define RGBLIGHT_EFFECT_BREATHE_CENTER 1.85  // 1 to 2.7
 //#    define RGBLIGHT_EFFECT_BREATHE_MAX    255   // 0 to 255
-//#endif
+#endif
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 5
