@@ -30,6 +30,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_ROWS 7
 #define MATRIX_COLS 6
 
+#define EEPROM_I2C_24LC64
+
 /*
  * Keyboard Matrix Assignments
  *
