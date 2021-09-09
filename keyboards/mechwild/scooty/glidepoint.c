@@ -43,14 +43,18 @@ void Pinnacle_Init()
         uprintf("Pinnacle initialized");
     #endif
   
+  Pinnacle_ClearFlags();
 }
 
 void RAP_Init()
 {
   // Set up I2C peripheral
     i2c_init();
+	//uprintf(DR_PIN);
     setPinInput(DR_PIN);
     writePinLow(DR_PIN);
+	Pinnacle_ClearFlags();
+	Pinnacle_ClearFlags();
 }
 
 void Pinnacle_ClearFlags()

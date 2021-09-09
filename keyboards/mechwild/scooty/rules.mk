@@ -22,7 +22,6 @@ BLUETOOTH_ENABLE = no       # Enable Bluetooth
 AUDIO_ENABLE = no           # Audio output
 ENCODER_ENABLE = no         # Enable encoder
 OLED_DRIVER_ENABLE = no     # Enable OLED Screen
-POINTING_DEVICE_ENABLE = yes
 
 AUTO_SHIFT_ENABLE    = yes
 DYNAMIC_MACRO_ENABLE = yes

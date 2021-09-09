@@ -50,5 +50,6 @@ void pointing_device_task() {
     process_mouse(&mouse_report);
     pointing_device_set_report(mouse_report);
     pointing_device_send();
+	//uprintf("So it made it this far");
 }
 #endif
