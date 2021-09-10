@@ -26,18 +26,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MANUFACTURER    MechWild
 #define PRODUCT         MurphPad
 
+#define AUDIO_PIN B5
+
+#ifdef AUDIO_ENABLE
+#    define MUSIC_ON_SONG SONG(PACMAN)
+#endif
+
 /* Key matrix size */
 #define MATRIX_ROWS 6
 #define MATRIX_COLS 5
 
 /* Key matrix pins */
 #define MATRIX_ROW_PINS { F5, B2, B3, B1, F7, F6 }
-#define MATRIX_COL_PINS { B5, D7, C6, D4, B6 }
+#define MATRIX_COL_PINS { B4, D7, C6, D4, B6 }
 #define UNUSED_PINS
 
 /* Encoder pins */
-#define ENCODERS_PAD_A { E6, D2 }
-#define ENCODERS_PAD_B { B4, D3 }
+#define ENCODERS_PAD_A { E6 }
+#define ENCODERS_PAD_B { D3 }
 
 /* Encoder resolution */
 #define ENCODER_RESOLUTION 4
@@ -57,11 +63,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    define RGBLIGHT_LIMIT_VAL 255 /* The maximum brightness level */
 #    define RGBLIGHT_SLEEP  /* If defined, the RGB lighting will be switched off when the host goes to sleep */
 /*== all animations enable ==*/
-#    define RGBLIGHT_ANIMATIONS
+//#    define RGBLIGHT_ANIMATIONS
 /*== or choose animations ==*/
 //#    define RGBLIGHT_EFFECT_BREATHING
-//#    define RGBLIGHT_EFFECT_RAINBOW_MOOD
-//#    define RGBLIGHT_EFFECT_RAINBOW_SWIRL
+#    define RGBLIGHT_EFFECT_RAINBOW_MOOD
+#    define RGBLIGHT_EFFECT_RAINBOW_SWIRL
 //#    define RGBLIGHT_EFFECT_SNAKE
 //#    define RGBLIGHT_EFFECT_KNIGHT
 //#    define RGBLIGHT_EFFECT_CHRISTMAS

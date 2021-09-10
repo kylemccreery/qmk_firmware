@@ -1,9 +1,3 @@
-# MCU name
-MCU = atmega32u4
-
-# Bootloader selection
-BOOTLOADER = caterina
-
 # Build Options
 #   change yes to no to disable
 #
@@ -17,9 +11,13 @@ SLEEP_LED_ENABLE = no       # Breathing sleep LED during USB suspend
 # if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
 NKRO_ENABLE = no            # USB Nkey Rollover
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
-RGBLIGHT_ENABLE = yes       # Enable keyboard RGB underglow
+RGBLIGHT_ENABLE = yes        # Enable keyboard RGB underglow
 BLUETOOTH_ENABLE = no       # Enable Bluetooth
 AUDIO_ENABLE = yes           # Audio output
-ENCODER_ENABLE = yes        # Enable encoder
-OLED_DRIVER_ENABLE = yes    # Enable OLED Screen
-LTO_ENABLE = yes
+ENCODER_ENABLE = yes        # Encoder Enabled
+
+EEPROM_DRIVER = i2c 
+
+DEFAULT_FOLDER = mechwild/waka60/f401
+
+AUDIO_DRIVER = pwm_software
