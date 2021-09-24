@@ -33,11 +33,9 @@ bool encoder_update_kb(uint8_t index, bool clockwise) {
 #endif
 
 void matrix_init_kb(void) {
-    //    place your keyboard startup
-    //    code here
-    bool is_enabled = rgblight_is_enabled();
-    if (is_enabled) {
-        rgblight_enable_noeeprom();
+    bool is_enabled = rgblight_is_enabled();    // This check and routine to enable if it is 
+    if (is_enabled) {                           // enabled is because stm32 doesn't ALWAYS 
+        rgblight_enable_noeeprom();             // remember the state when it starts up each time.
     } else {
         rgblight_disable_noeeprom();
     }
