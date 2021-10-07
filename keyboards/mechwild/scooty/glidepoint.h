@@ -13,9 +13,10 @@
 // Cirque's 7-bit I2C Slave Address
 #define CIRQUE_ADDR  (0x2A << 1)
 
-#define CIRQUE_WRITE (CIRQUE_ADDR | I2C_WRITE)
-#define CIRQUE_READ  (CIRQUE_ADDR | I2C_READ)
-
+//#define CIRQUE_WRITE (CIRQUE_ADDR | I2C_WRITE)
+//#define CIRQUE_READ  (CIRQUE_ADDR | I2C_READ)
+#define CIRQUE_WRITE 0x54
+#define CIRQUE_READ  0x55
 #define CIRQUE_I2C_TIMEOUT 100
 
 

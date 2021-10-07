@@ -28,7 +28,7 @@ void pointing_device_init(void) {
 void Pinnacle_Init()
 {
   RAP_Init();
-  //pinMode(DR_PIN, INPUT);
+  pinMode(DR_PIN, INPUT);
 
   // Host clears SW_CC flag
   Pinnacle_ClearFlags();
@@ -72,15 +72,39 @@ void RAP_ReadBytes(uint8_t* data, uint8_t reg_read, uint16_t size_of_data) {
     i2c_receive(CIRQUE_READ, data, size_of_data, CIRQUE_I2C_TIMEOUT);
     */
     uint8_t cmdByte = READ_MASK | reg_read;   // Form the READ command byte
+    i2c_writeReg(CIRQUE_WRITE, cmdByte, NULL, 0, CIRQUE_I2C_TIMEOUT);
     i2c_readReg(CIRQUE_WRITE, cmdByte, data, size_of_data, CIRQUE_I2C_TIMEOUT);
     i2c_stop();
 }
+
+
+//void RAP_ReadBytes(uint8_t address, uint8_t* data, uint8_t count) {
+//    uint8_t cmdByte = READ_MASK | address;  // Form the READ command byte
+//        i2c_writeReg(SLAVE_ADDR << 1, cmdByte, NULL, 0, I2C_TIMEOUT);
+//        if (i2c_readReg(SLAVE_ADDR << 1, cmdByte, data, count, I2C_TIMEOUT) != I2C_STATUS_SUCCESS) {
+//            dprintf("error right touchpad\n");
+//            touchpad_init[0] = false;
+//        }
+//        i2c_stop();
+//}
+//
+//// Writes single-byte <data> to <address>
+//void RAP_Write(uint8_t address, uint8_t data) {
+//    uint8_t cmdByte = WRITE_MASK | address;  // Form the WRITE command byte
+//        if (i2c_writeReg(SLAVE_ADDR << 1, cmdByte, &data, sizeof(data), I2C_TIMEOUT) != I2C_STATUS_SUCCESS) {
+//            dprintf("error right touchpad\n");
+//            touchpad_init[0] = false;
+//        }
+//        i2c_stop();
+//}
+
 
 // Writes single-byte <data> to <address>
 void RAP_Write(uint8_t reg_write, uint8_t data)
 {
     uint8_t cmdByte = WRITE_MASK | reg_write;  // Form the WRITE command byte
     i2c_writeReg(CIRQUE_WRITE, cmdByte, &data, 1, CIRQUE_I2C_TIMEOUT);
+    i2c_stop();
 }
 
 /*  ERA (Extended Register Access) Functions  */
@@ -169,21 +193,21 @@ void setAdcAttenuation(uint8_t adcGain)
 
 void Pinnacle_GetRelative(relData_t * result)
 {
-  uint8_t test[4] = { 0,0,0,0 };
-  RAP_ReadBytes(test, 0x12, 4);
-  //uint8_t config[4] = { 0,0,0 };
-  //RAP_ReadBytes(config, 0x03, 3);
+  //uint8_t test[4] = { 0,0,0,0 };
+  //RAP_ReadBytes(test, 0x12, 4);
+  uint8_t config[4] = { 0,0,0 };
+  RAP_ReadBytes(config, 0x03, 3);
   #ifdef CONSOLE_ENABLE
-    uprintf("pbyte0: %u  \txdelta: %u\tydelta: %u\twheel: %u\n", test[0], test[1], test[2], test[3]);
-    //uprintf("0x03: %02X  \t0x04: %02X\t0x05: %02X\n\n", config[0], config[1], config[2]);
+    //uprintf("pbyte0: %u  \txdelta: %u\tydelta: %u\twheel: %u\n", test[0], test[1], test[2], test[3]);
+    uprintf("0x03: %02X  \t0x04: %02X\t0x05: %02X\n\n", config[0], config[1], config[2]);
 
   #endif 
   Pinnacle_ClearFlags();
 
-  result->pbyte0 = test[0];
-  result->xDelta = test[1];
-  result->yDelta = test[2];
-  result->wheel = test[3];
+  result->pbyte0 = config[0];
+  result->xDelta = config[1];
+  result->yDelta = config[2];
+  //result->wheel = test[3];
   
   
 }
