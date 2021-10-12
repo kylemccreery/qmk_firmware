@@ -18,6 +18,8 @@
 
 #pragma once
 
+// PID, Inverse PID, SROM version
+const uint8_t firmware_signature[] PROGMEM = {0x42, 0xBD, 0x04};
 // clang-format off
 // Firmware Blob foor PMW3360
 const uint16_t firmware_length = 4094;
