@@ -16,6 +16,8 @@
 
 #pragma once
 
+#define EEPROM_I2C_24LC64
+
 #define TAPPING_TOGGLE 2
 // TT set to two taps
 

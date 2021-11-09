@@ -1,2 +1,1 @@
 EEPROM_DRIVER = i2c 
-VIA_ENABLE = yes
