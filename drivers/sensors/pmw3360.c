@@ -23,6 +23,7 @@
 #include PMW3360_FIRMWARE_H
 
 // Registers
+// clang-format off
 #define REG_Product_ID                 0x00
 #define REG_Revision_ID                0x01
 #define REG_Motion                     0x02
@@ -72,6 +73,7 @@
 #define REG_Lift_Config                0x63
 #define REG_Raw_Data_Burst             0x64
 #define REG_LiftCutoff_Tune2           0x65
+// clang-format on
 
 #ifndef MAX_CPI
 #    define MAX_CPI 0x77  // limits to 0--119, should be max cpi/100
@@ -141,7 +143,7 @@ void pmw3360_set_cpi(uint16_t cpi) {
 
 uint16_t pmw3360_get_cpi(void) {
     uint8_t cpival = spi_read_adv(REG_Config1);
-    return (uint16_t)(cpival & 0xFF) * 100;
+    return (uint16_t)((cpival + 1) & 0xFF) * 100;
 }
 
 bool pmw3360_init(void) {
@@ -184,6 +186,8 @@ bool pmw3360_init(void) {
 
     spi_write_adv(REG_Angle_Tune, constrain(ROTATIONAL_TRANSFORM_ANGLE, -30, 30));
 
+    spi_write_adv(REG_Lift_Config, PMW3360_LIFTOFF_DISTANCE);
+
     bool init_success = pmw3360_check_signature();
 
     writePinLow(PMW3360_CS_PIN);
@@ -203,7 +207,7 @@ void pmw3360_upload_firmware(void) {
     wait_us(15);
 
     unsigned char c;
-    for (int i = 0; i < firmware_length; i++) {
+    for (int i = 0; i < FIRMWARE_LENGTH; i++) {
         c = (unsigned char)pgm_read_byte(firmware_data + i);
         spi_write(c);
         wait_us(15);

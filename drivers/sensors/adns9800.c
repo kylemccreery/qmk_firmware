@@ -20,6 +20,7 @@
 #include "wait.h"
 
 // registers
+// clang-format off
 #define REG_Product_ID                   0x00
 #define REG_Revision_ID                  0x01
 #define REG_Motion                       0x02
@@ -66,14 +67,15 @@
 #define REG_SROM_Load_Burst              0x62
 #define REG_Pixel_Burst                  0x64
 
-#define MIN_CPI                          200
-#define MAX_CPI                          8200
-#define CPI_STEP                         200
-#define CLAMP_CPI(value)                 value<MIN_CPI ? MIN_CPI : value> MAX_CPI ? MAX_CPI : value
-#define US_BETWEEN_WRITES                120
-#define US_BETWEEN_READS                 20
-#define US_BEFORE_MOTION                 100
-#define MSB1                             0x80
+#define MIN_CPI           200
+#define MAX_CPI           8200
+#define CPI_STEP          200
+#define CLAMP_CPI(value)  value<MIN_CPI ? MIN_CPI : value> MAX_CPI ? MAX_CPI : value
+#define US_BETWEEN_WRITES 120
+#define US_BETWEEN_READS  20
+#define US_BEFORE_MOTION  100
+#define MSB1              0x80
+// clang-format on
 
 void adns9800_spi_start(void) { spi_start(ADNS9800_CS_PIN, false, ADNS9800_SPI_MODE, ADNS9800_SPI_DIVISOR); }
 
@@ -134,7 +136,7 @@ void adns9800_init() {
 
     // send all bytes of the firmware
     unsigned char c;
-    for (int i = 0; i < adns9800_firmware_length; i++) {
+    for (int i = 0; i < FIRMWARE_LENGTH; i++) {
         c = (unsigned char)pgm_read_byte(adns9800_firmware_data + i);
         spi_write(c);
         wait_us(15);

@@ -17,13 +17,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 #include "adns5050.h"
 #include "wait.h"
 #include "debug.h"
 #include "gpio.h"
 
 // Registers
+// clang-format off
 #define REG_PRODUCT_ID     0x00
 #define REG_REVISION_ID    0x01
 #define REG_MOTION         0x02
@@ -43,6 +43,7 @@
 #define REG_PRODUCT_ID2    0x3e
 #define REG_INV_REV_ID     0x3f
 #define REG_MOTION_BURST   0x63
+// clang-format on
 
 void adns5050_init(void) {
     // Initialize the ADNS serial pins.

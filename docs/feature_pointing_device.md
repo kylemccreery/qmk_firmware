@@ -30,7 +30,7 @@ The ADNS 5050 sensor uses a serial type protocol for communication, and requires
 
 The CPI range is 125-1375, in increments of 125. Defaults to 500 CPI.
 
-### ADSN 9800 Sensor
+### ADNS 9800 Sensor
 
 To use the ADNS 9800 sensor, add this to your `rules.mk`
 
@@ -92,7 +92,6 @@ This supports the Cirque Pinnacle 1CA027 Touch Controller, which is used in the 
 
 | Setting                         | Description                                                                     | Default               |
 |---------------------------------|---------------------------------------------------------------------------------|-----------------------|
-|`CIRQUE_PINNACLE_TIMEOUT`        | (Optional) The timeout for i2c communication with the trackpad in milliseconds. | `20`                  |
 |`CIRQUE_PINNACLE_X_LOWER`        | (Optional) The minimum reachable X value on the sensor.                         | `127`                 |
 |`CIRQUE_PINNACLE_X_UPPER`        | (Optional) The maximum reachable X value on the sensor.                         | `1919`                |
 |`CIRQUE_PINNACLE_Y_LOWER`        | (Optional) The minimum reachable Y value on the sensor.                         | `63`                  |
@@ -103,9 +102,10 @@ This supports the Cirque Pinnacle 1CA027 Touch Controller, which is used in the 
 | I2C Setting              | Description                                                                     | Default |
 |--------------------------|---------------------------------------------------------------------------------|---------|
 |`CIRQUE_PINNACLE_ADDR`    | (Required) Sets the I2C Address for the Cirque Trackpad                         | `0x2A`  |
+|`CIRQUE_PINNACLE_TIMEOUT` | (Optional) The timeout for i2c communication with the trackpad in milliseconds. | `20`    |
 
-| SPI Setting              | Description                                                                     | Default |
-|--------------------------|---------------------------------------------------------------------------------|---------|
+| SPI Setting                   | Description                                                            | Default       |
+|-------------------------------|------------------------------------------------------------------------|---------------|
 |`CIRQUE_PINNACLE_CLOCK_SPEED`  | (Optional) Sets the clock speed that the sensor runs at.               | `1000000`     |
 |`CIRQUE_PINNACLE_SPI_LSBFIRST` | (Optional) Sets the Least/Most Significant Byte First setting for SPI. | `false`       |
 |`CIRQUE_PINNACLE_SPI_MODE`     | (Optional) Sets the SPI Mode for the sensor.                           | `1`           |
@@ -150,6 +150,7 @@ The PMW 3360 is an SPI driven optical sensor, that uses a built in IR LED for su
 |`PMW3360_SPI_LSBFIRST`       | (Optional) Sets the Least/Most Significant Byte First setting for SPI.                     | `false`       |
 |`PMW3360_SPI_MODE`           | (Optional) Sets the SPI Mode for the sensor.                                               | `3`           |
 |`PMW3360_SPI_DIVISOR`        | (Optional) Sets the SPI Divisor used for SPI communication.                                | _varies_      |
+|`PMW3360_LIFTOFF_DISTANCE`   | (Optional) Sets the lift off distance at run time                                          | `0x02`        |
 |`ROTATIONAL_TRANSFORM_ANGLE` | (Optional) Allows for the sensor data to be rotated +/- 30 degrees directly in the sensor. | `0`           |
 
 The CPI range is 100-12000, in increments of 100. Defaults to 1600 CPI.
@@ -184,10 +185,8 @@ void           pointing_device_driver_set_cpi(uint16_t cpi) {}
 
 | Function                          | Description                                                                                                                            |
 |-----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| `pointing_device_init(void)`                               | (Depecated) Function to initialize hardware for the pointing device.                                          |
 | `pointing_device_init_kb(void)`                            | Callback to allow for keyboard level initialization. Useful for additional hardware sensors.                  |
 | `pointing_device_init_user(void)`                          | Callback to allow for user level initialization. Useful for additional hardware sensors.                      |
-| `pointing_device_task(void)`                               | (Depecated) Function to read data from sensors.                                                               |
 | `pointing_device_task_kb(mouse_report)`                    | Callback that sends sensor data, so keyboard code can intercept and modify the data.  Returns a mouse report. |
 | `pointing_device_task_user(mouse_report)`                  | Callback that sends sensor data, so user coe can intercept and modify the data.  Returns a mouse report.      |
 | `pointing_device_handle_buttons(buttons, pressed, button)` | Callback to handle hardware button presses. Returns a `uint8_t`.                                              |
@@ -221,9 +220,11 @@ Additionally, by default, `pointing_device_send()` will only send a report when 
 
 Also, you use the `has_mouse_report_changed(new, old)` function to check to see if the report has changed.
 
-## Example
+## Examples
 
-In the following example, a custom key is used to click the mouse and scroll 127 units vertically and horizontally, then undo all of that when released - because that's a totally useful function.  Listen, this is an example:
+### Custom Mouse Keycode
+
+In this example, a custom key is used to click the mouse and scroll 127 units vertically and horizontally, then undo all of that when released - because that's a totally useful function.
 
 ```c
 case MS_SPECIAL:
@@ -243,3 +244,33 @@ case MS_SPECIAL:
 ```
 
 Recall that the mouse report is set to zero (except the buttons) whenever it is sent, so the scrolling would only occur once in each case.
+
+### Drag Scroll or Mouse Scroll
+
+A very common implementation is to use the mouse movement to scroll instead of moving the cursor on the system.  This uses the `pointing_device_task_user` callback to intercept and modify the mouse report before it's sent to the host system. 
+
+```c
+enum custom_keycodes {
+    DRAG_SCROLL = SAFE_RANGE,
+};
+
+bool set_scrolling = false;
+
+report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
+    if (set_scrolling) {
+        mouse_report.h = mouse_report.x;
+        mouse_report.v = mouse_report.y;
+        mouse_report.x = mouse_report.y = 0
+    }
+    return mouse_report;
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (keycode == DRAG_SCROLL && record->event.pressed) {
+        set_scrolling = !set_scrolling;
+    }
+    return true;
+}
+```
+
+This allows you to toggle between scrolling and cursor movement by pressing the DRAG_SCROLL key.  
