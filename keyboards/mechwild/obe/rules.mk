@@ -11,7 +11,6 @@ BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 RGBLIGHT_ENABLE = yes        # Enable keyboard RGB underglow
 AUDIO_ENABLE = no           # Audio output
 ENCODER_ENABLE = yes        # Encoder Enabled
-
-EEPROM_DRIVER = i2c 
+#EEPROM_DRIVER = i2c 
 
 DEFAULT_FOLDER = mechwild/obe/f401
