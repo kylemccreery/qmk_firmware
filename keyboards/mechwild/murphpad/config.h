@@ -26,6 +26,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MANUFACTURER    MechWild
 #define PRODUCT         MurphPad
 
+#define F_SCL 100000UL
+#define POINTING_DEVICE_TASK_THROTTLE_MS 5
+
 /* Key matrix size */
 #define MATRIX_ROWS 6
 #define MATRIX_COLS 5
