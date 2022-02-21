@@ -24,13 +24,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PRODUCT_ID      0x1708
 #define DEVICE_VER      0x0100
 #define MANUFACTURER    MechWild
-#define PRODUCT         RB4X
+#define PRODUCT         RBF
 
 /* key matrix size */
 #define MATRIX_ROWS 7
 #define MATRIX_COLS 6
 
-#define EEPROM_I2C_24LC64
+//#define EEPROM_I2C_24LC64
+
+#define OLED_DISPLAY_128X64
+//#define OLED_DISPLAY_ADDRESS 0x78
 
 /*
  * Keyboard Matrix Assignments

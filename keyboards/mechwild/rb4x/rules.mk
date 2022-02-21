@@ -1,7 +1,7 @@
 # Build Options
 #   change yes to no to disable
 #
-BOOTMAGIC_ENABLE = lite     # Virtual DIP switch configuration
+BOOTMAGIC_ENABLE = yes     # Virtual DIP switch configuration
 MOUSEKEY_ENABLE = yes       # Mouse keys
 EXTRAKEY_ENABLE = yes       # Audio control and System control
 CONSOLE_ENABLE = no         # Console for debug
@@ -15,8 +15,9 @@ RGBLIGHT_ENABLE = yes      # Enable keyboard RGB underglow
 BLUETOOTH_ENABLE = no      # Enable Bluetooth
 AUDIO_ENABLE = no          # Audio output
 ENCODER_ENABLE = no        # Encoder Enabled
-OLED_DRIVER_ENABLE = yes   # Enable OLED Screen
+OLED_ENABLE = yes
+OLED_DRIVER = SSD1306    # Enable OLED Screen
 
 DEFAULT_FOLDER = mechwild/rb4x/f401
 
-EEPROM_DRIVER = i2c 
+# EEPROM_DRIVER = i2c 
