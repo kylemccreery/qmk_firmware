@@ -8,7 +8,6 @@
 #define DEVICE_VER 		0x0001
 #define MANUFACTURER    Evil
 #define PRODUCT         Evil80
-#define DESCRIPTION     QMK keyboard firmware for Evil80
 
 /* key matrix size */
 #define MATRIX_ROWS 6
@@ -56,5 +55,3 @@
 //#define NO_ACTION_LAYER
 //#define NO_ACTION_TAPPING
 //#define NO_ACTION_ONESHOT
-//#define NO_ACTION_MACRO
-//#define NO_ACTION_FUNCTION

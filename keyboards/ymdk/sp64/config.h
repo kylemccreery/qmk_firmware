@@ -24,16 +24,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DEVICE_VER      0x0200
 #define MANUFACTURER    YMDK
 #define PRODUCT SP64
-#define DESCRIPTION YMDK Split 64
 
 #define MATRIX_ROWS 6
 #define MATRIX_COLS 15
 
 #define RIGHT_HALF
-
-/* disable these deprecated features by default */
-#define NO_ACTION_MACRO
-#define NO_ACTION_FUNCTION
 
 /* RGB underglow */
 #define RGBLED_NUM 12

@@ -20,11 +20,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "config_common.h"
 
 /* USB Device descriptor parameter */
-#define VENDOR_ID 0xFEED
-#define PRODUCT_ID 0xF10B
+#define VENDOR_ID 0x7079
 #define DEVICE_VER 0x0001
 #define MANUFACTURER melonbred
-#define PRODUCT program_yoink
 
 /* key matrix size */
 #define MATRIX_ROWS 4
@@ -96,7 +94,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define NO_ACTION_LAYER
 //#define NO_ACTION_TAPPING
 //#define NO_ACTION_ONESHOT
-
-/* disable these deprecated features by default */
-#define NO_ACTION_MACRO
-#define NO_ACTION_FUNCTION
