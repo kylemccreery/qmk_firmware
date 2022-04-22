@@ -1,0 +1,252 @@
+2022-04-22T10:34:20,205 User install by explicit request
+2022-04-22T10:34:20,268 Created temporary directory: /tmp/pip-ephem-wheel-cache-omhcsuwy
+2022-04-22T10:34:20,268 Created temporary directory: /tmp/pip-req-tracker-xusgsl11
+2022-04-22T10:34:20,268 Initialized build tracking at /tmp/pip-req-tracker-xusgsl11
+2022-04-22T10:34:20,268 Created build tracker: /tmp/pip-req-tracker-xusgsl11
+2022-04-22T10:34:20,268 Entered build tracker: /tmp/pip-req-tracker-xusgsl11
+2022-04-22T10:34:20,268 Created temporary directory: /tmp/pip-install-rxp78am6
+2022-04-22T10:34:20,284 1 location(s) to search for versions of requirements.txt:
+2022-04-22T10:34:20,284 * https://pypi.org/simple/requirements-txt/
+2022-04-22T10:34:20,284 Fetching project page and analyzing links: https://pypi.org/simple/requirements-txt/
+2022-04-22T10:34:20,284 Getting page https://pypi.org/simple/requirements-txt/
+2022-04-22T10:34:20,285 Found index url https://pypi.org/simple
+2022-04-22T10:34:20,285 Getting credentials from keyring for https://pypi.org/simple
+2022-04-22T10:34:20,285 Getting credentials from keyring for pypi.org
+2022-04-22T10:34:20,286 Looking up "https://pypi.org/simple/requirements-txt/" in the cache
+2022-04-22T10:34:20,286 Request header has "max_age" as 0, cache bypassed
+2022-04-22T10:34:20,287 Starting new HTTPS connection (1): pypi.org:443
+2022-04-22T10:34:20,408 https://pypi.org:443 "GET /simple/requirements-txt/ HTTP/1.1" 404 13
+2022-04-22T10:34:20,409 Status code 404 not in (200, 203, 300, 301)
+2022-04-22T10:34:20,409 Could not fetch URL https://pypi.org/simple/requirements-txt/: 404 Client Error: Not Found for url: https://pypi.org/simple/requirements-txt/ - skipping
+2022-04-22T10:34:20,410 Given no hashes to check 0 links for project 'requirements.txt': discarding no candidates
+2022-04-22T10:34:20,410 ERROR: Could not find a version that satisfies the requirement requirements.txt (from versions: none)
+2022-04-22T10:34:20,410 Cleaning up...
+2022-04-22T10:34:20,410 Removed build tracker: '/tmp/pip-req-tracker-xusgsl11'
+2022-04-22T10:34:20,410 ERROR: No matching distribution found for requirements.txt
+2022-04-22T10:34:20,410 Exception information:
+2022-04-22T10:34:20,410 Traceback (most recent call last):
+2022-04-22T10:34:20,410   File "/usr/lib/python3/dist-packages/pip/_internal/cli/base_command.py", line 186, in _main
+2022-04-22T10:34:20,410     status = self.run(options, args)
+2022-04-22T10:34:20,410   File "/usr/lib/python3/dist-packages/pip/_internal/commands/install.py", line 357, in run
+2022-04-22T10:34:20,410     resolver.resolve(requirement_set)
+2022-04-22T10:34:20,410   File "/usr/lib/python3/dist-packages/pip/_internal/legacy_resolve.py", line 177, in resolve
+2022-04-22T10:34:20,410     discovered_reqs.extend(self._resolve_one(requirement_set, req))
+2022-04-22T10:34:20,410   File "/usr/lib/python3/dist-packages/pip/_internal/legacy_resolve.py", line 333, in _resolve_one
+2022-04-22T10:34:20,410     abstract_dist = self._get_abstract_dist_for(req_to_install)
+2022-04-22T10:34:20,410   File "/usr/lib/python3/dist-packages/pip/_internal/legacy_resolve.py", line 281, in _get_abstract_dist_for
+2022-04-22T10:34:20,410     req.populate_link(self.finder, upgrade_allowed, require_hashes)
+2022-04-22T10:34:20,410   File "/usr/lib/python3/dist-packages/pip/_internal/req/req_install.py", line 249, in populate_link
+2022-04-22T10:34:20,410     self.link = finder.find_requirement(self, upgrade)
+2022-04-22T10:34:20,410   File "/usr/lib/python3/dist-packages/pip/_internal/index/package_finder.py", line 926, in find_requirement
+2022-04-22T10:34:20,410     raise DistributionNotFound(
+2022-04-22T10:34:20,410 pip._internal.exceptions.DistributionNotFound: No matching distribution found for requirements.txt
+2022-04-22T10:40:39,373 User install by explicit request
+2022-04-22T10:40:39,423 Created temporary directory: /tmp/pip-ephem-wheel-cache-s3jgrgf3
+2022-04-22T10:40:39,423 Created temporary directory: /tmp/pip-req-tracker-emkiac25
+2022-04-22T10:40:39,423 Initialized build tracking at /tmp/pip-req-tracker-emkiac25
+2022-04-22T10:40:39,423 Created build tracker: /tmp/pip-req-tracker-emkiac25
+2022-04-22T10:40:39,423 Entered build tracker: /tmp/pip-req-tracker-emkiac25
+2022-04-22T10:40:39,424 Created temporary directory: /tmp/pip-install-5tfln90e
+2022-04-22T10:40:39,439 1 location(s) to search for versions of requirements.txt:
+2022-04-22T10:40:39,439 * https://pypi.org/simple/requirements-txt/
+2022-04-22T10:40:39,439 Fetching project page and analyzing links: https://pypi.org/simple/requirements-txt/
+2022-04-22T10:40:39,439 Getting page https://pypi.org/simple/requirements-txt/
+2022-04-22T10:40:39,440 Found index url https://pypi.org/simple
+2022-04-22T10:40:39,440 Getting credentials from keyring for https://pypi.org/simple
+2022-04-22T10:40:39,440 Getting credentials from keyring for pypi.org
+2022-04-22T10:40:39,440 Looking up "https://pypi.org/simple/requirements-txt/" in the cache
+2022-04-22T10:40:39,441 Request header has "max_age" as 0, cache bypassed
+2022-04-22T10:40:39,441 Starting new HTTPS connection (1): pypi.org:443
+2022-04-22T10:40:39,546 https://pypi.org:443 "GET /simple/requirements-txt/ HTTP/1.1" 404 13
+2022-04-22T10:40:39,546 Status code 404 not in (200, 203, 300, 301)
+2022-04-22T10:40:39,546 Could not fetch URL https://pypi.org/simple/requirements-txt/: 404 Client Error: Not Found for url: https://pypi.org/simple/requirements-txt/ - skipping
+2022-04-22T10:40:39,547 Given no hashes to check 0 links for project 'requirements.txt': discarding no candidates
+2022-04-22T10:40:39,547 ERROR: Could not find a version that satisfies the requirement requirements.txt (from versions: none)
+2022-04-22T10:40:39,548 Cleaning up...
+2022-04-22T10:40:39,548 Removed build tracker: '/tmp/pip-req-tracker-emkiac25'
+2022-04-22T10:40:39,548 ERROR: No matching distribution found for requirements.txt
+2022-04-22T10:40:39,548 Exception information:
+2022-04-22T10:40:39,548 Traceback (most recent call last):
+2022-04-22T10:40:39,548   File "/usr/lib/python3/dist-packages/pip/_internal/cli/base_command.py", line 186, in _main
+2022-04-22T10:40:39,548     status = self.run(options, args)
+2022-04-22T10:40:39,548   File "/usr/lib/python3/dist-packages/pip/_internal/commands/install.py", line 357, in run
+2022-04-22T10:40:39,548     resolver.resolve(requirement_set)
+2022-04-22T10:40:39,548   File "/usr/lib/python3/dist-packages/pip/_internal/legacy_resolve.py", line 177, in resolve
+2022-04-22T10:40:39,548     discovered_reqs.extend(self._resolve_one(requirement_set, req))
+2022-04-22T10:40:39,548   File "/usr/lib/python3/dist-packages/pip/_internal/legacy_resolve.py", line 333, in _resolve_one
+2022-04-22T10:40:39,548     abstract_dist = self._get_abstract_dist_for(req_to_install)
+2022-04-22T10:40:39,548   File "/usr/lib/python3/dist-packages/pip/_internal/legacy_resolve.py", line 281, in _get_abstract_dist_for
+2022-04-22T10:40:39,548     req.populate_link(self.finder, upgrade_allowed, require_hashes)
+2022-04-22T10:40:39,548   File "/usr/lib/python3/dist-packages/pip/_internal/req/req_install.py", line 249, in populate_link
+2022-04-22T10:40:39,548     self.link = finder.find_requirement(self, upgrade)
+2022-04-22T10:40:39,548   File "/usr/lib/python3/dist-packages/pip/_internal/index/package_finder.py", line 926, in find_requirement
+2022-04-22T10:40:39,548     raise DistributionNotFound(
+2022-04-22T10:40:39,548 pip._internal.exceptions.DistributionNotFound: No matching distribution found for requirements.txt
+2022-04-22T10:40:41,613 User install by explicit request
+2022-04-22T10:40:41,666 Created temporary directory: /tmp/pip-ephem-wheel-cache-pj9qzek4
+2022-04-22T10:40:41,666 Created temporary directory: /tmp/pip-req-tracker-b7kj5tsz
+2022-04-22T10:40:41,666 Initialized build tracking at /tmp/pip-req-tracker-b7kj5tsz
+2022-04-22T10:40:41,666 Created build tracker: /tmp/pip-req-tracker-b7kj5tsz
+2022-04-22T10:40:41,666 Entered build tracker: /tmp/pip-req-tracker-b7kj5tsz
+2022-04-22T10:40:41,667 Created temporary directory: /tmp/pip-install-2a6lckao
+2022-04-22T10:40:41,682 1 location(s) to search for versions of requirements.txt:
+2022-04-22T10:40:41,682 * https://pypi.org/simple/requirements-txt/
+2022-04-22T10:40:41,682 Fetching project page and analyzing links: https://pypi.org/simple/requirements-txt/
+2022-04-22T10:40:41,682 Getting page https://pypi.org/simple/requirements-txt/
+2022-04-22T10:40:41,683 Found index url https://pypi.org/simple
+2022-04-22T10:40:41,683 Getting credentials from keyring for https://pypi.org/simple
+2022-04-22T10:40:41,683 Getting credentials from keyring for pypi.org
+2022-04-22T10:40:41,684 Looking up "https://pypi.org/simple/requirements-txt/" in the cache
+2022-04-22T10:40:41,684 Request header has "max_age" as 0, cache bypassed
+2022-04-22T10:40:41,684 Starting new HTTPS connection (1): pypi.org:443
+2022-04-22T10:40:41,789 https://pypi.org:443 "GET /simple/requirements-txt/ HTTP/1.1" 404 13
+2022-04-22T10:40:41,790 Status code 404 not in (200, 203, 300, 301)
+2022-04-22T10:40:41,790 Could not fetch URL https://pypi.org/simple/requirements-txt/: 404 Client Error: Not Found for url: https://pypi.org/simple/requirements-txt/ - skipping
+2022-04-22T10:40:41,791 Given no hashes to check 0 links for project 'requirements.txt': discarding no candidates
+2022-04-22T10:40:41,791 ERROR: Could not find a version that satisfies the requirement requirements.txt (from versions: none)
+2022-04-22T10:40:41,791 Cleaning up...
+2022-04-22T10:40:41,792 Removed build tracker: '/tmp/pip-req-tracker-b7kj5tsz'
+2022-04-22T10:40:41,792 ERROR: No matching distribution found for requirements.txt
+2022-04-22T10:40:41,792 Exception information:
+2022-04-22T10:40:41,792 Traceback (most recent call last):
+2022-04-22T10:40:41,792   File "/usr/lib/python3/dist-packages/pip/_internal/cli/base_command.py", line 186, in _main
+2022-04-22T10:40:41,792     status = self.run(options, args)
+2022-04-22T10:40:41,792   File "/usr/lib/python3/dist-packages/pip/_internal/commands/install.py", line 357, in run
+2022-04-22T10:40:41,792     resolver.resolve(requirement_set)
+2022-04-22T10:40:41,792   File "/usr/lib/python3/dist-packages/pip/_internal/legacy_resolve.py", line 177, in resolve
+2022-04-22T10:40:41,792     discovered_reqs.extend(self._resolve_one(requirement_set, req))
+2022-04-22T10:40:41,792   File "/usr/lib/python3/dist-packages/pip/_internal/legacy_resolve.py", line 333, in _resolve_one
+2022-04-22T10:40:41,792     abstract_dist = self._get_abstract_dist_for(req_to_install)
+2022-04-22T10:40:41,792   File "/usr/lib/python3/dist-packages/pip/_internal/legacy_resolve.py", line 281, in _get_abstract_dist_for
+2022-04-22T10:40:41,792     req.populate_link(self.finder, upgrade_allowed, require_hashes)
+2022-04-22T10:40:41,792   File "/usr/lib/python3/dist-packages/pip/_internal/req/req_install.py", line 249, in populate_link
+2022-04-22T10:40:41,792     self.link = finder.find_requirement(self, upgrade)
+2022-04-22T10:40:41,792   File "/usr/lib/python3/dist-packages/pip/_internal/index/package_finder.py", line 926, in find_requirement
+2022-04-22T10:40:41,792     raise DistributionNotFound(
+2022-04-22T10:40:41,792 pip._internal.exceptions.DistributionNotFound: No matching distribution found for requirements.txt
+2022-04-22T10:41:01,442 User install by explicit request
+2022-04-22T10:41:01,493 Created temporary directory: /tmp/pip-ephem-wheel-cache-gg8oveqb
+2022-04-22T10:41:01,493 Created temporary directory: /tmp/pip-req-tracker-ha4fle_j
+2022-04-22T10:41:01,493 Initialized build tracking at /tmp/pip-req-tracker-ha4fle_j
+2022-04-22T10:41:01,494 Created build tracker: /tmp/pip-req-tracker-ha4fle_j
+2022-04-22T10:41:01,494 Entered build tracker: /tmp/pip-req-tracker-ha4fle_j
+2022-04-22T10:41:01,494 Created temporary directory: /tmp/pip-install-g063ytio
+2022-04-22T10:41:01,508 1 location(s) to search for versions of requirements.txt:
+2022-04-22T10:41:01,508 * https://pypi.org/simple/requirements-txt/
+2022-04-22T10:41:01,508 Fetching project page and analyzing links: https://pypi.org/simple/requirements-txt/
+2022-04-22T10:41:01,509 Getting page https://pypi.org/simple/requirements-txt/
+2022-04-22T10:41:01,509 Found index url https://pypi.org/simple
+2022-04-22T10:41:01,509 Getting credentials from keyring for https://pypi.org/simple
+2022-04-22T10:41:01,509 Getting credentials from keyring for pypi.org
+2022-04-22T10:41:01,510 Looking up "https://pypi.org/simple/requirements-txt/" in the cache
+2022-04-22T10:41:01,510 Request header has "max_age" as 0, cache bypassed
+2022-04-22T10:41:01,510 Starting new HTTPS connection (1): pypi.org:443
+2022-04-22T10:41:01,669 https://pypi.org:443 "GET /simple/requirements-txt/ HTTP/1.1" 404 13
+2022-04-22T10:41:01,670 Status code 404 not in (200, 203, 300, 301)
+2022-04-22T10:41:01,670 Could not fetch URL https://pypi.org/simple/requirements-txt/: 404 Client Error: Not Found for url: https://pypi.org/simple/requirements-txt/ - skipping
+2022-04-22T10:41:01,671 Given no hashes to check 0 links for project 'requirements.txt': discarding no candidates
+2022-04-22T10:41:01,671 ERROR: Could not find a version that satisfies the requirement requirements.txt (from versions: none)
+2022-04-22T10:41:01,671 Cleaning up...
+2022-04-22T10:41:01,671 Removed build tracker: '/tmp/pip-req-tracker-ha4fle_j'
+2022-04-22T10:41:01,671 ERROR: No matching distribution found for requirements.txt
+2022-04-22T10:41:01,671 Exception information:
+2022-04-22T10:41:01,671 Traceback (most recent call last):
+2022-04-22T10:41:01,671   File "/usr/lib/python3/dist-packages/pip/_internal/cli/base_command.py", line 186, in _main
+2022-04-22T10:41:01,671     status = self.run(options, args)
+2022-04-22T10:41:01,671   File "/usr/lib/python3/dist-packages/pip/_internal/commands/install.py", line 357, in run
+2022-04-22T10:41:01,671     resolver.resolve(requirement_set)
+2022-04-22T10:41:01,671   File "/usr/lib/python3/dist-packages/pip/_internal/legacy_resolve.py", line 177, in resolve
+2022-04-22T10:41:01,671     discovered_reqs.extend(self._resolve_one(requirement_set, req))
+2022-04-22T10:41:01,671   File "/usr/lib/python3/dist-packages/pip/_internal/legacy_resolve.py", line 333, in _resolve_one
+2022-04-22T10:41:01,671     abstract_dist = self._get_abstract_dist_for(req_to_install)
+2022-04-22T10:41:01,671   File "/usr/lib/python3/dist-packages/pip/_internal/legacy_resolve.py", line 281, in _get_abstract_dist_for
+2022-04-22T10:41:01,671     req.populate_link(self.finder, upgrade_allowed, require_hashes)
+2022-04-22T10:41:01,671   File "/usr/lib/python3/dist-packages/pip/_internal/req/req_install.py", line 249, in populate_link
+2022-04-22T10:41:01,671     self.link = finder.find_requirement(self, upgrade)
+2022-04-22T10:41:01,671   File "/usr/lib/python3/dist-packages/pip/_internal/index/package_finder.py", line 926, in find_requirement
+2022-04-22T10:41:01,671     raise DistributionNotFound(
+2022-04-22T10:41:01,671 pip._internal.exceptions.DistributionNotFound: No matching distribution found for requirements.txt
+2022-04-22T10:41:16,060 User install by explicit request
+2022-04-22T10:41:16,109 Created temporary directory: /tmp/pip-ephem-wheel-cache-o3x0qd8o
+2022-04-22T10:41:16,109 Created temporary directory: /tmp/pip-req-tracker-uz36qwk9
+2022-04-22T10:41:16,110 Initialized build tracking at /tmp/pip-req-tracker-uz36qwk9
+2022-04-22T10:41:16,110 Created build tracker: /tmp/pip-req-tracker-uz36qwk9
+2022-04-22T10:41:16,110 Entered build tracker: /tmp/pip-req-tracker-uz36qwk9
+2022-04-22T10:41:16,110 Created temporary directory: /tmp/pip-install-feosn4du
+2022-04-22T10:41:16,124 1 location(s) to search for versions of requirements.txt:
+2022-04-22T10:41:16,124 * https://pypi.org/simple/requirements-txt/
+2022-04-22T10:41:16,125 Fetching project page and analyzing links: https://pypi.org/simple/requirements-txt/
+2022-04-22T10:41:16,125 Getting page https://pypi.org/simple/requirements-txt/
+2022-04-22T10:41:16,125 Found index url https://pypi.org/simple
+2022-04-22T10:41:16,125 Getting credentials from keyring for https://pypi.org/simple
+2022-04-22T10:41:16,125 Getting credentials from keyring for pypi.org
+2022-04-22T10:41:16,126 Looking up "https://pypi.org/simple/requirements-txt/" in the cache
+2022-04-22T10:41:16,126 Request header has "max_age" as 0, cache bypassed
+2022-04-22T10:41:16,126 Starting new HTTPS connection (1): pypi.org:443
+2022-04-22T10:41:16,210 https://pypi.org:443 "GET /simple/requirements-txt/ HTTP/1.1" 404 13
+2022-04-22T10:41:16,211 Status code 404 not in (200, 203, 300, 301)
+2022-04-22T10:41:16,211 Could not fetch URL https://pypi.org/simple/requirements-txt/: 404 Client Error: Not Found for url: https://pypi.org/simple/requirements-txt/ - skipping
+2022-04-22T10:41:16,212 Given no hashes to check 0 links for project 'requirements.txt': discarding no candidates
+2022-04-22T10:41:16,212 ERROR: Could not find a version that satisfies the requirement requirements.txt (from versions: none)
+2022-04-22T10:41:16,212 Cleaning up...
+2022-04-22T10:41:16,212 Removed build tracker: '/tmp/pip-req-tracker-uz36qwk9'
+2022-04-22T10:41:16,212 ERROR: No matching distribution found for requirements.txt
+2022-04-22T10:41:16,213 Exception information:
+2022-04-22T10:41:16,213 Traceback (most recent call last):
+2022-04-22T10:41:16,213   File "/usr/lib/python3/dist-packages/pip/_internal/cli/base_command.py", line 186, in _main
+2022-04-22T10:41:16,213     status = self.run(options, args)
+2022-04-22T10:41:16,213   File "/usr/lib/python3/dist-packages/pip/_internal/commands/install.py", line 357, in run
+2022-04-22T10:41:16,213     resolver.resolve(requirement_set)
+2022-04-22T10:41:16,213   File "/usr/lib/python3/dist-packages/pip/_internal/legacy_resolve.py", line 177, in resolve
+2022-04-22T10:41:16,213     discovered_reqs.extend(self._resolve_one(requirement_set, req))
+2022-04-22T10:41:16,213   File "/usr/lib/python3/dist-packages/pip/_internal/legacy_resolve.py", line 333, in _resolve_one
+2022-04-22T10:41:16,213     abstract_dist = self._get_abstract_dist_for(req_to_install)
+2022-04-22T10:41:16,213   File "/usr/lib/python3/dist-packages/pip/_internal/legacy_resolve.py", line 281, in _get_abstract_dist_for
+2022-04-22T10:41:16,213     req.populate_link(self.finder, upgrade_allowed, require_hashes)
+2022-04-22T10:41:16,213   File "/usr/lib/python3/dist-packages/pip/_internal/req/req_install.py", line 249, in populate_link
+2022-04-22T10:41:16,213     self.link = finder.find_requirement(self, upgrade)
+2022-04-22T10:41:16,213   File "/usr/lib/python3/dist-packages/pip/_internal/index/package_finder.py", line 926, in find_requirement
+2022-04-22T10:41:16,213     raise DistributionNotFound(
+2022-04-22T10:41:16,213 pip._internal.exceptions.DistributionNotFound: No matching distribution found for requirements.txt
+2022-04-22T10:43:31,129 User install by explicit request
+2022-04-22T10:43:31,179 Created temporary directory: /tmp/pip-ephem-wheel-cache-03uxfppf
+2022-04-22T10:43:31,179 Created temporary directory: /tmp/pip-req-tracker-11qmk5en
+2022-04-22T10:43:31,179 Initialized build tracking at /tmp/pip-req-tracker-11qmk5en
+2022-04-22T10:43:31,179 Created build tracker: /tmp/pip-req-tracker-11qmk5en
+2022-04-22T10:43:31,179 Entered build tracker: /tmp/pip-req-tracker-11qmk5en
+2022-04-22T10:43:31,180 Created temporary directory: /tmp/pip-install-a0p4hvjp
+2022-04-22T10:43:31,197 1 location(s) to search for versions of requirements.txt:
+2022-04-22T10:43:31,197 * https://pypi.org/simple/requirements-txt/
+2022-04-22T10:43:31,197 Fetching project page and analyzing links: https://pypi.org/simple/requirements-txt/
+2022-04-22T10:43:31,197 Getting page https://pypi.org/simple/requirements-txt/
+2022-04-22T10:43:31,198 Found index url https://pypi.org/simple
+2022-04-22T10:43:31,198 Getting credentials from keyring for https://pypi.org/simple
+2022-04-22T10:43:31,198 Getting credentials from keyring for pypi.org
+2022-04-22T10:43:31,198 Looking up "https://pypi.org/simple/requirements-txt/" in the cache
+2022-04-22T10:43:31,198 Request header has "max_age" as 0, cache bypassed
+2022-04-22T10:43:31,199 Starting new HTTPS connection (1): pypi.org:443
+2022-04-22T10:43:31,303 https://pypi.org:443 "GET /simple/requirements-txt/ HTTP/1.1" 404 13
+2022-04-22T10:43:31,304 Status code 404 not in (200, 203, 300, 301)
+2022-04-22T10:43:31,304 Could not fetch URL https://pypi.org/simple/requirements-txt/: 404 Client Error: Not Found for url: https://pypi.org/simple/requirements-txt/ - skipping
+2022-04-22T10:43:31,304 Given no hashes to check 0 links for project 'requirements.txt': discarding no candidates
+2022-04-22T10:43:31,305 ERROR: Could not find a version that satisfies the requirement requirements.txt (from versions: none)
+2022-04-22T10:43:31,305 Cleaning up...
+2022-04-22T10:43:31,305 Removed build tracker: '/tmp/pip-req-tracker-11qmk5en'
+2022-04-22T10:43:31,305 ERROR: No matching distribution found for requirements.txt
+2022-04-22T10:43:31,305 Exception information:
+2022-04-22T10:43:31,305 Traceback (most recent call last):
+2022-04-22T10:43:31,305   File "/usr/lib/python3/dist-packages/pip/_internal/cli/base_command.py", line 186, in _main
+2022-04-22T10:43:31,305     status = self.run(options, args)
+2022-04-22T10:43:31,305   File "/usr/lib/python3/dist-packages/pip/_internal/commands/install.py", line 357, in run
+2022-04-22T10:43:31,305     resolver.resolve(requirement_set)
+2022-04-22T10:43:31,305   File "/usr/lib/python3/dist-packages/pip/_internal/legacy_resolve.py", line 177, in resolve
+2022-04-22T10:43:31,305     discovered_reqs.extend(self._resolve_one(requirement_set, req))
+2022-04-22T10:43:31,305   File "/usr/lib/python3/dist-packages/pip/_internal/legacy_resolve.py", line 333, in _resolve_one
+2022-04-22T10:43:31,305     abstract_dist = self._get_abstract_dist_for(req_to_install)
+2022-04-22T10:43:31,305   File "/usr/lib/python3/dist-packages/pip/_internal/legacy_resolve.py", line 281, in _get_abstract_dist_for
+2022-04-22T10:43:31,305     req.populate_link(self.finder, upgrade_allowed, require_hashes)
+2022-04-22T10:43:31,305   File "/usr/lib/python3/dist-packages/pip/_internal/req/req_install.py", line 249, in populate_link
+2022-04-22T10:43:31,305     self.link = finder.find_requirement(self, upgrade)
+2022-04-22T10:43:31,305   File "/usr/lib/python3/dist-packages/pip/_internal/index/package_finder.py", line 926, in find_requirement
+2022-04-22T10:43:31,305     raise DistributionNotFound(
+2022-04-22T10:43:31,305 pip._internal.exceptions.DistributionNotFound: No matching distribution found for requirements.txt
