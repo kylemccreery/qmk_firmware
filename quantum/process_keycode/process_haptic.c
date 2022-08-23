@@ -130,7 +130,12 @@ bool process_haptic(uint16_t keycode, keyrecord_t *record) {
     }
 
     if (haptic_get_enable() && ((!HAPTIC_OFF_IN_LOW_POWER) || (usb_device_state == USB_DEVICE_STATE_CONFIGURED))) {
-        if (record->event.pressed) {
+#ifndef ALLOW_HAPTIC_ENCODER
+        if (IS_ENCODEREVENT(record->event)) {
+            return true;
+        }
+#endif
+        if (record->event.pressed){
             // keypress
             if (haptic_get_feedback() < 2 && get_haptic_enabled_key(keycode, record)) {
                 haptic_play();
