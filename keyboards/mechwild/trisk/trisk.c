@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include "quantum.h"
+#include "raw_hid.h"
+#include "trisk.h"
 
 #ifdef RGB_MATRIX_ENABLE
 led_config_t g_led_config = { {
@@ -14,3 +16,28 @@ led_config_t g_led_config = { {
     1, 4, 4, 4, 4, 4, 4,4, 4, 4, 4, 4, 1, 2, 2, 2, 2
 } };
 #endif
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case SEND_TEST_BYTE:
+      if (record->event.pressed) {
+        uint8_t nice = 0x69;
+        raw_hid_send(&nice, RAW_EPSIZE);
+      } 
+      return false; // Skip all further processing of this key
+    case DEF_UP:
+      if (record->event.pressed) {
+        uint8_t nice = 0x25;
+        raw_hid_send(&nice, RAW_EPSIZE);
+      } 
+      return false; // Skip all further processing of this key
+    case DEF_DN:
+      if (record->event.pressed) {
+        uint8_t nice = 0x26;
+        raw_hid_send(&nice, RAW_EPSIZE);
+      } 
+      return false; // Skip all further processing of this key
+    default:
+      return true; // Process all other keycodes normally
+  }
+}

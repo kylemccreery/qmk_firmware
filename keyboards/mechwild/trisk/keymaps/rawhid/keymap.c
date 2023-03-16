@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include QMK_KEYBOARD_H
-#include  "raw_hid.h"
+#include "raw_hid.h"
 #include "print.h"
 
 void keyboard_post_init_user(void) {
@@ -20,7 +20,7 @@ enum layer_names {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
-        KC_MUTE, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, RGB_RMOD, RGB_MOD, RGB_TOG
+        SEND_TEST_BYTE, DEF_UP, DEF_DN, KC_3, QK_BOOT, KC_5, KC_6, KC_7, KC_8, KC_9, RGB_RMOD, RGB_MOD, RGB_TOG
     )
 };
 
@@ -39,16 +39,15 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 
 #if defined(ENCODER_MAP_ENABLE)
 const uint16_t PROGMEM encoder_map[][2][2] = {
-    [_BASE] =  { ENCODER_CCW_CW(KC_VOLD, KC_VOLU),  ENCODER_CCW_CW(KC_VOLD, KC_VOLU)      }
+    [_BASE] =  { ENCODER_CCW_CW(DEF_UP, DEF_DN),  ENCODER_CCW_CW(DEF_UP, DEF_DN)      }
 };
 #endif
 
-
-
 void raw_hid_receive(uint8_t *data, uint8_t length) {
-    uprintf("%s string", data[0]);
+    uprintf("Command: 0x%02X \n", data[0] );
     raw_hid_send(data, length);
     uint8_t *command_id = &(data[0]);
+    uint8_t *command_val = data + 1;
 
     switch (*command_id) {
         case 0:
@@ -62,6 +61,12 @@ void raw_hid_receive(uint8_t *data, uint8_t length) {
             break;
         case 3:
             rgb_matrix_set_color_all(RGB_BLUE);
+            break;
+        case 4:
+            uprintf("Current Artist: %s \n", command_val);
+            break;
+        case 5:
+            uprintf("Current Song: %s \n", command_val);
             break;
     break;
     }
