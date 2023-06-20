@@ -33,12 +33,13 @@ RGBLIGHT_DRIVER = APA102
 
 At minimum you must define the data pin your LED strip is connected to, and the number of LEDs in the strip, in your `config.h`. For APA102 LEDs, you must also define the clock pin. If your keyboard has onboard RGB LEDs, and you are simply creating a keymap, you usually won't need to modify these.
 
-|Define         |Description                                                                                              |
-|---------------|---------------------------------------------------------------------------------------------------------|
-|`RGB_DI_PIN`   |The pin connected to the data pin of the LEDs                                                            |
-|`RGB_CI_PIN`   |The pin connected to the clock pin of the LEDs (APA102 only)                                             |
-|`RGBLED_NUM`   |The number of LEDs connected                                                                             |
-|`RGBLED_SPLIT` |(Optional) For split keyboards, the number of LEDs connected on each half directly wired to `RGB_DI_PIN` |
+|Define         |Description                                                              |
+|---------------|-------------------------------------------------------------------------|
+|`WS2812_DI_PIN`|The pin connected to the data pin of the LEDs (WS2812)                   |
+|`APA102_DI_PIN`|The pin connected to the data pin of the LEDs (APA102)                   |
+|`APA102_CI_PIN`|The pin connected to the clock pin of the LEDs (APA102)                  |
+|`RGBLED_NUM`   |The number of LEDs connected                                             |
+|`RGBLED_SPLIT` |(Optional) For split keyboards, the number of LEDs connected on each half|
 
 Then you should be able to use the keycodes below to change the RGB lighting to your liking.
 
@@ -165,7 +166,7 @@ The following options are used to tweak the various animations:
 |`RGBLIGHT_EFFECT_TWINKLE_PROBABILITY`|`1/127`     |Adjusts how likely each LED is to twinkle (on each animation step)                             |
 
 ### Example Usage to Reduce Memory Footprint
-  1. Selectively disable the animations you want to enable. The following would enable two animations and save about 4KiB:
+  1. Use `#undef` to selectively disable animations. The following would disable two animations and save about 4KiB:
 
 ```diff
  #undef RGBLED_NUM

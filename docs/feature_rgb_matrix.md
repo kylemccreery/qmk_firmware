@@ -156,6 +156,82 @@ const is31_led PROGMEM g_is31_leds[RGB_MATRIX_LED_COUNT] = {
 Where `X_Y` is the location of the LED in the matrix defined by [the datasheet](https://www.issi.com/WW/pdf/31FL3733.pdf) and the header file `drivers/led/issi/is31fl3733.h`. The `driver` is the index of the driver you defined in your `config.h` (`0`, `1`, `2`, or `3` for now).
 
 ---
+### IS31FL3736 :id=is31fl3736
+
+There is basic support for addressable RGB matrix lighting with the I2C IS31FL3736 RGB controller. To enable it, add this to your `rules.mk`:
+
+```make
+RGB_MATRIX_ENABLE = yes
+RGB_MATRIX_DRIVER = IS31FL3736
+```
+You can use between 1 and 4 IS31FL3736 IC's. Do not specify `DRIVER_ADDR_<N>` defines for IC's that are not present on your keyboard.
+
+Configure the hardware via your `config.h`:
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `ISSI_TIMEOUT` | (Optional) How long to wait for i2c messages, in milliseconds | 100 |
+| `ISSI_PERSISTENCE` | (Optional) Retry failed messages this many times | 0 |
+| `ISSI_PWM_FREQUENCY` | (Optional) PWM Frequency Setting - IS31FL3736B only | 0 |
+| `ISSI_GLOBALCURRENT` | (Optional) Configuration for the Global Current Register | 0xFF |
+| `ISSI_SWPULLUP` | (Optional) Set the value of the SWx lines on-chip de-ghosting resistors | PUR_0R (Disabled) |
+| `ISSI_CSPULLUP` | (Optional) Set the value of the CSx lines on-chip de-ghosting resistors | PUR_0R (Disabled) |
+| `DRIVER_COUNT` | (Required) How many RGB driver IC's are present | |
+| `RGB_MATRIX_LED_COUNT` | (Required) How many RGB lights are present across all drivers | |
+| `DRIVER_ADDR_1` | (Required) Address for the first RGB driver | |
+| `DRIVER_ADDR_2` | (Optional) Address for the second RGB driver | |
+| `DRIVER_ADDR_3` | (Optional) Address for the third RGB driver | |
+| `DRIVER_ADDR_4` | (Optional) Address for the fourth RGB driver | |
+
+The IS31FL3736 IC's have on-chip resistors that can be enabled to allow for de-ghosting of the RGB matrix. By default these resistors are not enabled (`ISSI_SWPULLUP`/`ISSI_CSPULLUP` are given the value of`PUR_0R`), the values that can be set to enable de-ghosting are as follows:
+
+| `ISSI_SWPULLUP/ISSI_CSPULLUP` | Description |
+|----------------------|-------------|
+| `PUR_0R` | (default) Do not use the on-chip resistors/enable de-ghosting |
+| `PUR_05KR` | The 0.5k Ohm resistor used during blanking period (t_NOL) |
+| `PUR_1KR` | The 1k Ohm resistor used during blanking period (t_NOL) |
+| `PUR_2KR` | The 2k Ohm resistor used during blanking period (t_NOL) |
+| `PUR_4KR` | The 4k Ohm resistor used during blanking period (t_NOL) |
+| `PUR_8KR` | The 8k Ohm resistor during blanking period (t_NOL) |
+| `PUR_16KR` | The 16k Ohm resistor during blanking period (t_NOL) |
+| `PUR_32KR` | The 32k Ohm resistor used during blanking period (t_NOL) |
+
+Here is an example using 2 drivers.
+
+```c
+// This is a 7-bit address, that gets left-shifted and bit 0
+// set to 0 for write, 1 for read (as per I2C protocol)
+// The address will vary depending on your wiring:
+// 0000 <-> GND
+// 0101 <-> SCL
+// 1010 <-> SDA
+// 1111 <-> VCC
+// ADDR represents A3:A0 of the 7-bit address.
+// The result is: 0b101(ADDR)
+#define DRIVER_ADDR_1 0b1010000
+#define DRIVER_ADDR_2 0b1010001
+
+#define DRIVER_COUNT 2
+#define DRIVER_1_LED_TOTAL 30
+#define DRIVER_2_LED_TOTAL 32
+#define RGB_MATRIX_LED_COUNT (DRIVER_1_LED_TOTAL + DRIVER_2_LED_TOTAL)
+```
+!> Note the parentheses, this is so when `RGB_MATRIX_LED_COUNT` is used in code and expanded, the values are added together before any additional math is applied to them. As an example, `rand() % (DRIVER_1_LED_TOTAL + DRIVER_2_LED_TOTAL)` will give very different results than `rand() % DRIVER_1_LED_TOTAL + DRIVER_2_LED_TOTAL`.
+
+Define these arrays listing all the LEDs in your `<keyboard>.c`:
+
+```c
+const is31_led PROGMEM g_is31_leds[RGB_MATRIX_LED_COUNT] = {
+/* Refer to IS31 manual for these locations
+ *   driver
+ *   |  R location
+ *   |  |       G location
+ *   |  |       |       B location
+ *   |  |       |       | */
+    {0, B_1,    A_1,    C_1},
+    ....
+}
+```
 ### IS31FL3737 :id=is31fl3737
 
 There is basic support for addressable RGB matrix lighting with the I2C IS31FL3737 RGB controller. To enable it, add this to your `rules.mk`:
@@ -218,8 +294,6 @@ Here is an example using 2 drivers.
 ```
 !> Note the parentheses, this is so when `RGB_MATRIX_LED_COUNT` is used in code and expanded, the values are added together before any additional math is applied to them. As an example, `rand() % (DRIVER_1_LED_TOTAL + DRIVER_2_LED_TOTAL)` will give very different results than `rand() % DRIVER_1_LED_TOTAL + DRIVER_2_LED_TOTAL`.
 
-Currently only 2 drivers are supported, but it would be trivial to support all 4 combinations.
-
 Define these arrays listing all the LEDs in your `<keyboard>.c`:
 
 ```c
@@ -252,7 +326,7 @@ Where `<driver name>` is the applicable LED driver chip as below
 | Driver Name | Data Sheet | Capability |
 |-------------|------------|------------|
 | `IS31FL3742A` | [datasheet](https://www.lumissil.com/assets/pdf/core/IS31FL3742A_DS.pdf) | 60 RGB, 30x6 Matrix |
-| `ISSIFL3743A` | [datasheet](https://www.lumissil.com/assets/pdf/core/IS31FL3743A_DS.pdf) | 66 RGB, 18x11 Matrix |
+| `IS31FL3743A` | [datasheet](https://www.lumissil.com/assets/pdf/core/IS31FL3743A_DS.pdf) | 66 RGB, 18x11 Matrix |
 | `IS31FL3745` | [datasheet](https://www.lumissil.com/assets/pdf/core/IS31FL3745_DS.pdf) | 48 RGB, 18x8 Matrix |
 | `IS31FL3746A` | [datasheet](https://www.lumissil.com/assets/pdf/core/IS31FL3746A_DS.pdf) | 24 RGB, 18x4 Matrix |
 
@@ -361,7 +435,7 @@ Configure the hardware via your `config.h`:
 
 ```c
 // The pin connected to the data pin of the LEDs
-#define RGB_DI_PIN D7
+#define WS2812_DI_PIN D7
 // The number of LEDs connected
 #define RGB_MATRIX_LED_COUNT 70
 ```
@@ -383,9 +457,9 @@ Configure the hardware via your `config.h`:
 
 ```c
 // The pin connected to the data pin of the LEDs
-#define RGB_DI_PIN D7
+#define APA102_DI_PIN D7
 // The pin connected to the clock pin of the LEDs
-#define RGB_CI_PIN D6
+#define APA102_CI_PIN D6
 // The number of LEDs connected
 #define RGB_MATRIX_LED_COUNT 70
 ```
@@ -576,7 +650,7 @@ enum rgb_matrix_effects {
     RGB_MATRIX_PIXEL_FRACTAL,       // Single hue fractal filled keys pulsing horizontally out to edges
     RGB_MATRIX_PIXEL_FLOW,          // Pulsing RGB flow along LED wiring with random hues
     RGB_MATRIX_PIXEL_RAIN,          // Randomly light keys with random hues
-#if define(RGB_MATRIX_FRAMEBUFFER_EFFECTS)
+#if defined(RGB_MATRIX_FRAMEBUFFER_EFFECTS)
     RGB_MATRIX_TYPING_HEATMAP,      // How hot is your WPM!
     RGB_MATRIX_DIGITAL_RAIN,        // That famous computer simulation
 #endif
@@ -688,6 +762,14 @@ Remove the spread effect entirely.
 
 ```c
 #define RGB_MATRIX_TYPING_HEATMAP_SLIM
+```
+
+It's also possible to adjust the tempo of *heating up*. It's defined as the number of shades that are
+increased on the [HSV scale](https://en.wikipedia.org/wiki/HSL_and_HSV). Decreasing this value increases
+the number of keystrokes needed to fully heat up the key.
+
+```c
+#define RGB_MATRIX_TYPING_HEATMAP_INCREASE_STEP 32
 ```
 
 ### RGB Matrix Effect Solid Reactive :id=rgb-matrix-effect-solid-reactive
@@ -811,13 +893,7 @@ These are defined in [`color.h`](https://github.com/qmk/qmk_firmware/blob/master
 
 ## EEPROM storage :id=eeprom-storage
 
-The EEPROM for it is currently shared with the LED Matrix system (it's generally assumed only one feature would be used at a time), but could be configured to use its own 32bit address with:
-
-```c
-#define EECONFIG_RGB_MATRIX (uint32_t *)28
-```
-
-Where `28` is an unused index from `eeconfig.h`.
+The EEPROM for it is currently shared with the LED Matrix system (it's generally assumed only one feature would be used at a time).
 
 ## Functions :id=functions
 
@@ -1007,7 +1083,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 }
 ```
 
-!> RGB indicators on split keyboards will require state information synced to the slave half (e.g. `#define SPLIT_LAYER_STATE_ENABLE`). See [data sync options](feature_split_keyboard.md#data-sync-options) for more details.
+?> RGB indicators on split keyboards will require state information synced to the slave half (e.g. `#define SPLIT_LAYER_STATE_ENABLE`). See [data sync options](feature_split_keyboard.md#data-sync-options) for more details.
 
 #### Indicators without RGB Matrix Effect
 
